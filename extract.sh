@@ -63,7 +63,7 @@ binary_section=$BINARY$section_name
 
 objcopy -j $section_name -O binary $BINARY $binary_section
 
-extracted_file_size_dec=$(wc -c < a.out.rodata) # dec
+extracted_file_size_dec=$(wc -c < $binary_section) # dec
 section_size_dec=$(printf "%d" $((0x$section_size))) # dec
 [ "x$extracted_file_size_dec" != "x$section_size_dec" ] && \
     echo "ERROR: Something went wrong. Extracted section size is not equal to the size read ($extracted_file_size_dec != $section_size_dec)." && \
